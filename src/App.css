@@ -1,32 +1,41 @@
-.App {
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 65px;
+  grid-template-rows: 80px 1fr 1fr 1fr;
+}
+.Button{
+  grid-column: 4 / 5;
+  grid-row: 2 / 3 ;
+  margin: 10px;
+  background-color: #23995c;
+}
+.Icon {
+  background-image: url(./Icon.png);
+}
+.Header {
+  grid-column: 1 / 5;
+  grid-row: 1 / 2;
+  width: 1fr;
+  height: 1fr;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  line-height: 80px;
+  font-size: 30px;
+  font-weight: 800;
   color: white;
+  background: rgb(29,89,148);
+  background: linear-gradient(90deg, rgba(29,89,148,1) 25%, rgba(34,150,94,1) 75%);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.SearchBar {
+  grid-column: 1 / 4 ;
+  grid-row : 2 / 3;
+  margin: 10px;
+  height: 40px;
+  width: 290%;
+  font-size: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  border-color: #aaaaaa;
 }
