@@ -8,7 +8,11 @@
   grid-column: 4 / 5;
   grid-row: 2 / 3 ;
   margin: 10px;
-  background-color: #23995c;
+  background-color: #23995c !important ;
+  background-image: url(./Icon.png);
+  background-position: center;
+  background-size: 35px;  
+  background-repeat: no-repeat;
 }
 .Icon {
   background-image: url(./Icon.png);
@@ -38,4 +42,19 @@
   border-width: 1px;
   border-radius: 2px;
   border-color: #aaaaaa;
+}
+
+.Results{
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+  
+
+
+}
+.Favourites{
+  font-size: 20px;
+  font-weight: 700;
+  color: #23995c;
+  grid-column: 1 / 5;
+  grid-row: 4 / 5;
 }

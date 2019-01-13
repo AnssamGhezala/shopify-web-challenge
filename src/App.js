@@ -10,10 +10,11 @@ class App extends Component {
         <div className="container">
           <header className="Header">Toronto Waste Lookup</header>
           <SearchBar className="SearchBar" />
-          <button className="Button">
+          <button className="btn Button">
             <span className="Icon" />
           </button>
-          <Results className="results" />
+          <Results className="Results" />
+          <div className="Favourites"> Favourites </div>
         </div>
       </div>
     );
