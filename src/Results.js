@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Result from "./Result.js";
-
+import Grid from "./Grid.js";
 class Results extends Component {
   render() {
     return (
