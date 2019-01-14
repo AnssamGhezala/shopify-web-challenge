@@ -2,7 +2,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 65px;
-  grid-template-rows: 80px 1fr 1fr 1fr;
+  grid-template-rows: 100px 1fr 1fr 1fr;
 }
 .Button{
   grid-column: 4 / 5;
@@ -10,13 +10,15 @@
   margin: 10px;
   width: 50px;
   background-color: #23995c !important ;
-  background-image: url(./Icon.png);
+ 
   background-position: center;
   background-size: 35px;  
   background-repeat: no-repeat;
 }
 .Icon {
-  background-image: url(./Icon.png);
+  color: white;
+  transform: rotate(90deg);
+
 }
 .Header {
   grid-column: 1 / 5;
@@ -24,7 +26,7 @@
   width: 1fr;
   height: 1fr;
   text-align: center;
-  line-height: 80px;
+  line-height: 100px;
   font-size: 30px;
   font-weight: 800;
   color: white;
