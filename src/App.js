@@ -5,7 +5,7 @@ import Grid from "./Grid.js";
 
 class App extends Component {
   state = {
-    results: [],
+    results: [{ title: "blue bin", body: "idk :(((((" }],
     favourites: [],
     search: ""
   };
@@ -21,7 +21,10 @@ class App extends Component {
           />
 
           <Grid data={this.state.results} className="container" />
-          <Grid data={this.state.favourites} className="container" />
+          <div className="Favourites">
+            <Grid data={this.state.favourites} className="container" />
+            Favourites
+          </div>
         </div>
       </div>
     );

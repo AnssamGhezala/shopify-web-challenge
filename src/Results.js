@@ -6,7 +6,7 @@ class Results extends Component {
   render() {
     return (
       <div className={this.props.className}>
-        <Result> </Result>
+        <Grid data={this.props.results} />
       </div>
     );
   }
