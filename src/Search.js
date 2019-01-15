@@ -7,8 +7,7 @@ class Search extends Component {
   handleSubmit = () => {
     console.log("submit");
   };
-  handleChange = () => {};
-
+  handleSearchChange = () => {};
   render() {
     return (
       <div className={this.props.className}>

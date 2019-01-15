@@ -6,10 +6,11 @@ class Grid extends Component {
   state = { name: "", favourite: false };
 
   render() {
+    var count = 0;
     return (
       <div className={this.props.className}>
         {this.props.data.map(item => (
-          <div>
+          <div key={count++}>
             <Star className="Star">
               {item.title}
               <div>{item.body}</div>
