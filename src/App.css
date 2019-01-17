@@ -58,8 +58,9 @@
   color: white;
   transform: rotate(90deg);
 }
-
-
+.Result{
+  grid-column: 1 / span 2;
+}
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;

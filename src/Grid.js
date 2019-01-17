@@ -12,7 +12,7 @@ class Grid extends Component {
     return (
       <div className={this.props.className}>
         {this.props.data.map(item => (
-          <div key={count++}>
+          <div key={count++} className="Result">
             <div className="Title">
               <Star className="Star" />
               {item.title}
