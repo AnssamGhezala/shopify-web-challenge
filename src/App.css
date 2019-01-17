@@ -22,6 +22,7 @@
  
 }
 
+
 .SearchBar {
   flex:1;
   font-size: 20px;
@@ -37,6 +38,7 @@
   margin-right: 10px;
   width: 55px;
   padding:10px;
+  cursor: pointer;
   background-color: #23995c !important ;
   box-shadow: 0 .01rem .25rem  #aaaaaa !important;
   border: none;
@@ -45,7 +47,13 @@
   background-size: 35px;  
   background-repeat: no-repeat;
 }
+.Button:hover {background-color: #3e8e41}
 
+.Button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+}
 .Icon {
   color: white;
   transform: rotate(90deg);
@@ -56,9 +64,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-top:5px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   margin-left:10px;
 }
+
+.Title{
+  grid-column: 1 / 2;
+  }
+  
+  .Description{
+    grid-column: 2 / 3;
+  }
 
 .Star{
   color: #aaaaaa;
@@ -68,16 +84,18 @@
   margin-right: 5px;
   cursor: pointer;
 }
-.Results{
-  
+
+.FavouriteText{
+  font-size: 30px;
+  font-weight: 700;
+  color: #23995c;
 }
 .Favourites{
+  
   position: fixed;
     bottom: 0;
     width: 100%;
-  font-size: 20px;
-  font-weight: 700;
-  color: #23995c;
+  
   background-color: #f7fefa;
   padding: 10px;
 }

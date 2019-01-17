@@ -7,14 +7,17 @@ class Grid extends Component {
 
   render() {
     var count = 0;
+
+    console.log(this.props.data);
     return (
       <div className={this.props.className}>
         {this.props.data.map(item => (
           <div key={count++}>
-            <Star className="Star">
+            <div className="Title">
+              <Star className="Star" />
               {item.title}
-              <div>{item.body}</div>
-            </Star>
+            </div>
+            <div className="Description">{item.body}</div>
           </div>
         ))}
       </div>
