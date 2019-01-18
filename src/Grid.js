@@ -3,10 +3,8 @@ import "./App.css";
 import { ReactComponent as Star } from "./star-solid.svg";
 
 class Grid extends Component {
-  state = { name: "", favourite: false, item: "" };
-
-  createMarkup = () => {
-    return { __html: this.state.item };
+  state = {
+    star: this.props.star
   };
 
   htmlDecode(content) {
@@ -23,7 +21,12 @@ class Grid extends Component {
         {this.props.data.map(item => (
           <React.Fragment key={count++}>
             <div className="Title">
-              <Star className="Star" />
+              <Star
+                className={this.state.star}
+                onClick={() => {
+                  this.props.test(item);
+                }}
+              />
               {item.title}
             </div>
             <div

@@ -6,10 +6,10 @@ import Grid from "./Grid.js";
 class App extends Component {
   state = {
     results: [
-      { title: "blue bin", body: "idk :(((((" },
+      { title: "blue bin", body: "it's green bin yoho" },
       { title: "purple bin", body: "it's purple yey" }
     ],
-    favourites: [{ title: "green bin", body: "it's green" }],
+    favourites: [{ title: "green bin", body: "it's green yey" }],
     search: ""
   };
   handleSubmit = e => {
@@ -24,15 +24,21 @@ class App extends Component {
             result.keywords.includes(this.state.search)
           )
         });
-        // console.log(results[0].keywords.includes("tape dispenser"));
-        console.log(this.state.search);
-        console.log(this.state.results);
       });
   };
   handleSearch = event => {
     var text = event.target.value;
     this.setState({ search: text });
-    // console.log(text);
+  };
+  recieveFavourites = favourite => {
+    if (this.state.favourites.includes(favourite)) {
+      var index = this.state.favourites.indexOf(favourite);
+      this.state.favourites.splice(index, 1);
+    } else {
+      this.state.favourites.push(favourite);
+    }
+
+    console.log(this.state.favourites);
   };
   render() {
     return (
@@ -45,11 +51,20 @@ class App extends Component {
             onSearchSubmit={this.handleSubmit}
             className="Search"
           />
-
-          <Grid data={this.state.results} className="container" />
+          <Grid
+            data={this.state.results}
+            className="container"
+            test={this.recieveFavourites}
+            star="Star"
+          />
           <div className="Favourites">
             <div className="FavouriteText"> Favourites </div>
-            <Grid data={this.state.favourites} className="container" />
+            <Grid
+              data={this.state.favourites}
+              className="container"
+              test={this.recieveFavourites}
+              star="GreenStar"
+            />
           </div>
         </div>
       </div>
