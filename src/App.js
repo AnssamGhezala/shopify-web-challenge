@@ -5,11 +5,8 @@ import Grid from "./Grid.js";
 
 class App extends Component {
   state = {
-    results: [
-      { title: "blue bin", body: "it's green bin yoho" },
-      { title: "purple bin", body: "it's purple yey" }
-    ],
-    favourites: [{ title: "green bin", body: "it's green yey" }],
+    results: [],
+    favourites: [],
     search: ""
   };
   handleSubmit = e => {
@@ -32,10 +29,18 @@ class App extends Component {
   };
   recieveFavourites = favourite => {
     if (this.state.favourites.includes(favourite)) {
-      var index = this.state.favourites.indexOf(favourite);
-      this.state.favourites.splice(index, 1);
+      const index = this.state.favourites.indexOf(favourite);
+      const length = this.state.favourites.length;
+      const newFavourites = [
+        ...this.state.favourites.slice(0, index),
+        ...this.state.favourites.slice(index + 1, length)
+      ];
+      this.setState({ favourites: newFavourites });
     } else {
-      this.state.favourites.push(favourite);
+      // create a new favouries array with the new favourite appended at the end
+      const newFavourites = [...this.state.favourites, favourite];
+      // replace the old favourites with the new ones
+      this.setState({ favourites: newFavourites });
     }
 
     console.log(this.state.favourites);
