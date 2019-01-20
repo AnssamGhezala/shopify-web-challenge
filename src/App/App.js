@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Search from "./Search.js";
-import Grid from "./Grid.js";
+import Search from "./Search";
+import Favourites from "./Favourites";
+import Results from "./Results";
 
 class App extends Component {
   state = {
@@ -36,7 +37,7 @@ class App extends Component {
     this.setState({ search: text });
   };
 
-  recieveFavourites = favourite => {
+  handleFavouriteSelection = favourite => {
     if (this.state.favourites.includes(favourite)) {
       const index = this.state.favourites.indexOf(favourite);
       const length = this.state.favourites.length;
@@ -50,9 +51,9 @@ class App extends Component {
       const newFavourites = [...this.state.favourites, favourite];
       // replace the old favourites with the new ones
       this.setState({ favourites: newFavourites });
-      console.log(this.state.favourites);
     }
   };
+
   render() {
     return (
       <div className="App">
@@ -63,23 +64,17 @@ class App extends Component {
           onSearchSubmit={this.handleSubmit}
           className="Search"
         />
-        <Grid
-          data={this.state.results}
-          className="container"
-          test={this.recieveFavourites}
-          star="Star"
+        <Results
+          results={this.state.results}
+          onFavouriteSelection={this.handleFavouriteSelection}
           favourites={this.state.favourites}
-          type="result"
         />
         <div className="Favourites">
           <div className="FavouriteText"> Favourites </div>
-          <Grid
-            data={this.state.favourites}
-            className="container"
-            test={this.recieveFavourites}
-            star="GreenStar"
+          <Favourites
+            results={this.state.results}
+            onFavouriteSelection={this.handleFavouriteSelection}
             favourites={this.state.favourites}
-            type="favourites"
           />
         </div>
       </div>

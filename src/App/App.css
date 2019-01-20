@@ -109,7 +109,7 @@
   font-size: 30px;
   font-weight: 700;
   color: #23995c;
-  margin-left: 10px;
+  
 }
 
 .Favourites{
@@ -117,4 +117,5 @@
   max-height: 200px;
   overflow-y:auto;
   background-color: #f7fefa;
+  margin-left: 10px;
 }

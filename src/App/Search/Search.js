@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import { ReactComponent as Icon } from "./search-solid.svg";
 
 class Search extends Component {
@@ -12,7 +11,6 @@ class Search extends Component {
           <input
             name="search"
             placeholder=""
-            // value={this.state.search}
             onChange={this.props.onSearchChange}
             type="text"
             className="SearchBar"
