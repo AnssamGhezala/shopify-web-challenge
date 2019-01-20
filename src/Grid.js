@@ -4,7 +4,9 @@ import { ReactComponent as Star } from "./star-solid.svg";
 
 class Grid extends Component {
   state = {
-    star: this.props.star
+    star: this.props.star,
+    favourites: this.props.favourites,
+    type: this.props.type
   };
 
   htmlDecode(content) {
@@ -12,7 +14,18 @@ class Grid extends Component {
     e.innerHTML = content;
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
   }
-
+  handleStar = item => {
+    if (this.state.type == "result") {
+      //   console.log(this.state.favourites);
+      if (this.state.favourites.includes(item)) {
+        this.setState({ star: "GreenStar" });
+      } else {
+        this.setState({ star: "Star" });
+      }
+    } else {
+      this.setState({ star: "GreenStar" });
+    }
+  };
   render() {
     var count = 0;
 
@@ -24,6 +37,7 @@ class Grid extends Component {
               <Star
                 className={this.state.star}
                 onClick={() => {
+                  this.setState({ star: "GreenStar" });
                   this.props.test(item);
                 }}
               />
@@ -41,3 +55,10 @@ class Grid extends Component {
 }
 
 export default Grid;
+// () => {
+//   if (this.state.favouritres.includes(item)) {
+//     return "GreenStar";
+//   } else {
+//     return this.state.star;
+//   }
+// }
