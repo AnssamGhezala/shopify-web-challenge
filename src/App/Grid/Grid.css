@@ -1,0 +1,17 @@
+.Star{
+  color: #aaaaaa;
+  height: 16px;
+  width:16px;
+  vertical-align: -2px;
+  margin-right: 5px; 
+  cursor: pointer;
+}
+
+.GreenStar{
+  color: #23995c;;
+  height: 16px;
+  width:16px;
+  vertical-align: -2px;
+  margin-right: 5px; 
+  cursor: pointer;
+}

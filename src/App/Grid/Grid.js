@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./Grid.css";
+import Loader from "./Loader";
 import { ReactComponent as Star } from "./star-solid.svg";
 
 class Grid extends Component {
@@ -17,21 +19,25 @@ class Grid extends Component {
 
     return (
       <div className={this.props.className || ""}>
-        {this.props.data.map(item => (
-          <React.Fragment key={count++}>
-            <div className="Title">
-              <Star
-                className={this.getStartClassNameFromItem(item)}
-                onClick={() => this.props.onFavouriteSelection(item)}
+        {this.props.isFetching ? (
+          <Loader />
+        ) : (
+          this.props.data.map(item => (
+            <React.Fragment key={count++}>
+              <div className="Title">
+                <Star
+                  className={this.getStartClassNameFromItem(item)}
+                  onClick={() => this.props.onFavouriteSelection(item)}
+                />
+                {item.title}
+              </div>
+              <div
+                className="Description"
+                dangerouslySetInnerHTML={{ __html: this.htmlDecode(item.body) }}
               />
-              {item.title}
-            </div>
-            <div
-              className="Description"
-              dangerouslySetInnerHTML={{ __html: this.htmlDecode(item.body) }}
-            />
-          </React.Fragment>
-        ))}
+            </React.Fragment>
+          ))
+        )}
       </div>
     );
   }

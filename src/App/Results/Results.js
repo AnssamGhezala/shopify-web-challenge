@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Results.css";
 import Grid from "../Grid";
 
 class Results extends Component {
@@ -10,13 +11,18 @@ class Results extends Component {
     return Boolean(item);
   };
 
+  getClassName = () => {
+    return this.props.isFetching ? "fetching-container" : "container";
+  };
+
   render() {
     return (
       <Grid
-        className="container"
+        className={this.getClassName()}
         data={this.props.results}
         onFavouriteSelection={this.props.onFavouriteSelection}
         isResultAFavourite={this.isResultAFavourite}
+        isFetching={this.props.isFetching}
       />
     );
   }

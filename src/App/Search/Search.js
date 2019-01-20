@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+
 import { ReactComponent as Icon } from "./search-solid.svg";
+
+import "./Search.css";
 
 class Search extends Component {
   state = { search: "" };

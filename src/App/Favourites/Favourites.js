@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Favourites.css";
 import Grid from "../Grid";
 
 class Favourites extends Component {

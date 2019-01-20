@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     results: [],
     favourites: [],
-    search: ""
+    search: "",
+    isFetching: false
   };
 
   handleSubmit = e => {
@@ -18,7 +19,7 @@ class App extends Component {
       this.state.results.length && this.setState({ results: [] });
       return;
     }
-
+    this.setState({ isFetching: true });
     fetch(
       "https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000&fbclid=IwAR3nM6OSDuwjPL_opm_6Q4oJkuDcyk0_P5ZA-yJ_jbjGxf4iPYFMvV-5VM0"
     )
@@ -27,7 +28,8 @@ class App extends Component {
         this.setState({
           results: results.filter(result =>
             result.keywords.includes(this.state.search)
-          )
+          ),
+          isFetching: false
         });
       });
   };
@@ -68,6 +70,7 @@ class App extends Component {
           results={this.state.results}
           onFavouriteSelection={this.handleFavouriteSelection}
           favourites={this.state.favourites}
+          isFetching={this.state.isFetching}
         />
         <div className="Favourites">
           <div className="FavouriteText"> Favourites </div>
