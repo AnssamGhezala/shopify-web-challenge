@@ -16,3 +16,9 @@
   background: linear-gradient(90deg, rgba(29,89,148,1) 25%, rgba(34,150,94,1) 75%);
 }
 
+.Favourites-container{
+  width: 100%;
+  background-color: #f7fefa;
+  padding:10px;
+  box-sizing: border-box;
+}

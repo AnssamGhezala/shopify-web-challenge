@@ -4,6 +4,20 @@ import Search from "./Search";
 import Favourites from "./Favourites";
 import Results from "./Results";
 
+const API =
+  "https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000&fbclid=IwAR3nM6OSDuwjPL_opm_6Q4oJkuDcyk0_P5ZA-yJ_jbjGxf4iPYFMvV-5VM0";
+
+const loadData = async app => {
+  const response = await fetch(API);
+  const results = await response.json();
+  app.setState({
+    results: results.filter(result =>
+      result.keywords.includes(app.state.search)
+    ),
+    isFetching: false
+  });
+};
+
 class App extends Component {
   state = {
     results: [],
@@ -19,41 +33,47 @@ class App extends Component {
       this.state.results.length && this.setState({ results: [] });
       return;
     }
+
     this.setState({ isFetching: true });
-    fetch(
-      "https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000&fbclid=IwAR3nM6OSDuwjPL_opm_6Q4oJkuDcyk0_P5ZA-yJ_jbjGxf4iPYFMvV-5VM0"
-    )
-      .then(response => response.json())
-      .then(results => {
-        this.setState({
-          results: results.filter(result =>
-            result.keywords.includes(this.state.search)
-          ),
-          isFetching: false
-        });
-      });
+
+    // fetch(API)
+    //   .then(response => response.json())
+    //   .then(results => {
+    //     this.setState({
+    //       results: results.filter(result =>
+    //         result.keywords.includes(this.state.search)
+    //       ),
+    //       isFetching: false
+    //     });
+    //   });
+    loadData(this);
   };
 
   handleSearch = event => {
-    var text = event.target.value;
+    let text = event.target.value;
     this.setState({ search: text });
   };
 
+  isResultAFavourite = result => {
+    const item = this.state.favourites.find(
+      favourite => favourite.title === result.title
+    );
+
+    return Boolean(item);
+  };
+
   handleFavouriteSelection = favourite => {
-    if (this.state.favourites.includes(favourite)) {
-      const index = this.state.favourites.indexOf(favourite);
-      const length = this.state.favourites.length;
-      const newFavourites = [
-        ...this.state.favourites.slice(0, index),
-        ...this.state.favourites.slice(index + 1, length)
-      ];
-      this.setState({ favourites: newFavourites });
+    let newFavourites;
+    if (this.isResultAFavourite(favourite)) {
+      newFavourites = this.state.favourites.filter(
+        item => item.title !== favourite.title
+      );
     } else {
       // create a new favouries array with the new favourite appended at the end
-      const newFavourites = [...this.state.favourites, favourite];
-      // replace the old favourites with the new ones
-      this.setState({ favourites: newFavourites });
+      newFavourites = [...this.state.favourites, favourite];
     }
+    // replace the old favourites with the new ones
+    this.setState({ favourites: newFavourites });
   };
 
   render() {
@@ -68,11 +88,12 @@ class App extends Component {
         />
         <Results
           results={this.state.results}
+          isResultAFavourite={this.isResultAFavourite}
           onFavouriteSelection={this.handleFavouriteSelection}
           favourites={this.state.favourites}
           isFetching={this.state.isFetching}
         />
-        <div className="Favourites">
+        <div className="Favourites-container">
           <div className="FavouriteText"> Favourites </div>
           <Favourites
             results={this.state.results}

@@ -3,14 +3,6 @@ import "./Results.css";
 import Grid from "../Grid";
 
 class Results extends Component {
-  isResultAFavourite = result => {
-    const item = this.props.favourites.find(
-      favourite => favourite.title === result.title
-    );
-
-    return Boolean(item);
-  };
-
   getClassName = () => {
     return this.props.isFetching ? "fetching-container" : "container";
   };
@@ -21,7 +13,7 @@ class Results extends Component {
         className={this.getClassName()}
         data={this.props.results}
         onFavouriteSelection={this.props.onFavouriteSelection}
-        isResultAFavourite={this.isResultAFavourite}
+        isResultAFavourite={this.props.isResultAFavourite}
         isFetching={this.props.isFetching}
       />
     );

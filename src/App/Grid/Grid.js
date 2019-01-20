@@ -15,15 +15,13 @@ class Grid extends Component {
   };
 
   render() {
-    var count = 0;
-
     return (
       <div className={this.props.className || ""}>
         {this.props.isFetching ? (
           <Loader />
         ) : (
-          this.props.data.map(item => (
-            <React.Fragment key={count++}>
+          this.props.data.map((item, idx) => (
+            <React.Fragment key={idx}>
               <div className="Title">
                 <Star
                   className={this.getStartClassNameFromItem(item)}
