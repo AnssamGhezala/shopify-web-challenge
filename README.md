@@ -1,3 +1,4 @@
+# Shopify Web Challenge
 A web app to search for waste items using the Toronto Waste Wizard database, and save frequently used ones.
 
 [Hosted Version](https://build-prndexzpol.now.sh/) 
