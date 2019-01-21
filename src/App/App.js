@@ -7,15 +7,9 @@ import Results from "./Results";
 const API =
   "https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000&fbclid=IwAR3nM6OSDuwjPL_opm_6Q4oJkuDcyk0_P5ZA-yJ_jbjGxf4iPYFMvV-5VM0";
 
-const loadData = async app => {
+const loadData = async () => {
   const response = await fetch(API);
-  const results = await response.json();
-  app.setState({
-    results: results.filter(result =>
-      result.keywords.includes(app.state.search)
-    ),
-    isFetching: false
-  });
+  return await response.json();
 };
 
 class App extends Component {
@@ -26,7 +20,7 @@ class App extends Component {
     isFetching: false
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     if (!this.state.search) {
@@ -36,22 +30,12 @@ class App extends Component {
 
     this.setState({ isFetching: true });
 
-    // fetch(API)
-    //   .then(response => response.json())
-    //   .then(results => {
-    //     this.setState({
-    //       results: results.filter(result =>
-    //         result.keywords.includes(this.state.search)
-    //       ),
-    //       isFetching: false
-    //     });
-    //   });
-    loadData(this);
+    const results = await loadData();
+    this.setState({ results, isFetching: false });
   };
 
   handleSearch = event => {
-    let text = event.target.value;
-    this.setState({ search: text });
+    this.setState({ search: event.target.value });
   };
 
   isResultAFavourite = result => {
@@ -64,6 +48,7 @@ class App extends Component {
 
   handleFavouriteSelection = favourite => {
     let newFavourites;
+
     if (this.isResultAFavourite(favourite)) {
       newFavourites = this.state.favourites.filter(
         item => item.title !== favourite.title
@@ -72,6 +57,7 @@ class App extends Component {
       // create a new favouries array with the new favourite appended at the end
       newFavourites = [...this.state.favourites, favourite];
     }
+
     // replace the old favourites with the new ones
     this.setState({ favourites: newFavourites });
   };
