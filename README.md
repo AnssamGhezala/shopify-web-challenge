@@ -1,7 +1,6 @@
 A web app to search for waste items using the Toronto Waste Wizard database, and save frequently used ones.
 
-## Hosted version
-[Demo](https://build-prndexzpol.now.sh/) 
+[Hosted Version](https://build-prndexzpol.now.sh/) 
 
 ## Available Scripts
 
